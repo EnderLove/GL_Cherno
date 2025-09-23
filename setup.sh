@@ -31,6 +31,15 @@ fi
 echo
 echo "vcpkg is ready at $VCPKG_ROOT"
 
+
+# ------------------------------
+# Install dependencies from vcpkg.json
+# ------------------------------
+
+echo
+echo "Installing dependencies from vcpkg.json..."
+"$VCPKG_ROOT/vcpkg" install --triplet x64-linux
+
 # ------------------------------
 # Run CMake configuration & build
 # ------------------------------
@@ -42,7 +51,7 @@ echo "Configuring project with CMake..."
 mkdir -p "$BUILD_DIR"
 cd "$BUILD_DIR"
 
-cmake .. -DCMAKE_TOOLCHAIN_FILE="$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake" -DCMAKE_BUILD_TYPE=Release
+cmake .. -DCMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake -DVCPKG_MANIFEST_MODE=ON -DVCPKG_TARGET_TRIPLET=x64-linux
 
 echo
 echo "Building project..."

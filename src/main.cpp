@@ -7,7 +7,7 @@ int main() {
         std::cerr << "Failed to initialize GLFW\n";
         return -1;
     }
-
+    
     GLFWwindow* window = glfwCreateWindow(800, 600, "OpenGL Project", NULL, NULL);
     if (!window) {
         std::cerr << "Failed to create GLFW window\n";
