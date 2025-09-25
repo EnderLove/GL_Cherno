@@ -69,3 +69,5 @@ endif()
 
 # Link glfw (all platforms)
 target_link_libraries(${PROJECT_NAME} PRIVATE glfw)
+
+file(COPY resources DESTINATION ${CMAKE_BINARY_DIR})
